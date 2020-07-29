@@ -68,23 +68,29 @@ public class Main {
                 System.out.println("Input department name: ");
                 department_name = sc.next();
                 String head_name = departmentService.getHeadByDepartmentName(department_name).getName();
-                System.out.println("Haed of "+department_name+" department is: "+head_name);
+                message = "Haed of "+department_name+" department is: "+head_name;
+                System.out.println(message);
                 break;
             case "2":
                 System.out.println("Input department name: ");
-                department_name = String.valueOf(System.in.read());
+                department_name = sc.next();
+
                 break;
             case "3":
                 System.out.println("Input department name: ");
-                department_name = String.valueOf(System.in.read());
+                department_name = sc.next();
+
                 break;
             case "4":
                 System.out.println("Input department name: ");
-                department_name = String.valueOf(System.in.read());
+                department_name = sc.next();
+                message = department_name+" employees count: "+departmentService.getDepartmentEmployeesCount(department_name);
+                System.out.println(message);
                 break;
             case "5":
                 System.out.println("Input template: ");
-                template = String.valueOf(System.in.read());
+                template = sc.next();
+
                 break;
         }
     }
