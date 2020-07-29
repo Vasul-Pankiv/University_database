@@ -59,6 +59,6 @@ public class Department {
     }
 
     public void setHead(Lector lector) {
-        this.head = head;
+        this.head = lector;
     }
 }

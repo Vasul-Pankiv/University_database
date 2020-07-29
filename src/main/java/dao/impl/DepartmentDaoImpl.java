@@ -65,16 +65,16 @@ public class DepartmentDaoImpl implements DepartmentDao {
 
     }
 
-    public Lector showHead(String name) {
+    public Lector getHeadByDepartmentName(String name) {
         Lector lector = findByName(name).getHead();
         return lector;
     }
 
-    public long showAverageSalary(String name) {
+    public long getAverageSalaryByDepartmentName(String name) {
         return 0;
     }
 
-    public long getEmployeesCount(String name) {
+    public long getEmployeesCountByDepartmentName(String name) {
         Department department = findByName(name);
         int employeesCount = department.getLectors().size();
         return employeesCount;

@@ -17,6 +17,7 @@ public class DegreeService {
     public void delete(Degree degree){
         degreeDao.delete(degree);
     }
+
     public void update(Degree degree){
         degreeDao.update(degree);
     }

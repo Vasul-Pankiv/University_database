@@ -14,8 +14,8 @@ public interface DepartmentDao {
      void update(Department department);
      Set<Department> findAll();
      void showStatistic(String name);
-     Lector showHead(String name);
-     long showAverageSalary(String name);
-     long getEmployeesCount(String name);
+     Lector getHeadByDepartmentName(String name);
+     long getAverageSalaryByDepartmentName(String name);
+     long getEmployeesCountByDepartmentName(String name);
 
 }
