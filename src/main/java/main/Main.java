@@ -10,6 +10,7 @@ import services.LectorService;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) throws SQLException, IOException {
@@ -17,42 +18,7 @@ public class Main {
         LectorService lectorService = new LectorService();
         DegreeService degreeService = new DegreeService();
 
-        Degree assistant = new Degree("assistant");
-        Degree associate_proffesor = new Degree("associate-proffesor");
-        Degree proffesor = new Degree("proffesor");
-
-        Department department = new Department("SAPR");
-        Department department1 = new Department("KI");
-        Department department2 = new Department("ASU");
-        Lector lector = new Lector("Vasul","Pankiv",10000,assistant);
-        Lector lector1 = new Lector("Vasul","Pankiv",10000,assistant);
-        Lector lector2 = new Lector("Vasul","Pankiv",10000,assistant);
-
-        departmentService.save(department);
-        departmentService.save(department1);
-        departmentService.save(department2);
-        degreeService.save(assistant);
-        degreeService.save(associate_proffesor);
-        degreeService.save(proffesor);
-        lectorService.saveLector(lector);
-        lectorService.saveLector(lector1);
-        lectorService.saveLector(lector2);
-
-        lector.addDepartment(department);
-        lector.addDepartment(department1);
-        lector.addDepartment(department2);
-        lectorService.updateLector(lector);
-        department.addLector(lector1);
-        department.addLector(lector2);
-
-        department.setHead(lector);
-
-        departmentService.update(department);
-
-        System.out.println(departmentService.getDepartmentEmployeesCount("SAPR"));
-
-        String message, department_name;
-        String template;
+        String message, department_name,template;
         System.out.println("Menu:\n" +
                 "1. Who is head of department {department_name}\n" +
                 "2. Show {department_name} statistic\n" +
@@ -74,12 +40,15 @@ public class Main {
             case "2":
                 System.out.println("Input department name: ");
                 department_name = sc.next();
+                message = departmentService.getDepartmentStatisticByDepartmentName(department_name);
+                System.out.println(message);
 
                 break;
             case "3":
                 System.out.println("Input department name: ");
                 department_name = sc.next();
-
+                message = "Average salary of "+department_name+"department: "+departmentService.getAverageSalaryByDepartmentName(department_name);
+                System.out.println(message);
                 break;
             case "4":
                 System.out.println("Input department name: ");
@@ -90,7 +59,10 @@ public class Main {
             case "5":
                 System.out.println("Input template: ");
                 template = sc.next();
-
+                Set<Lector> lectors = lectorService.globalSearch(template);
+                for (Lector l : lectors) {
+                    System.out.println("Name: "+l.getName()+" second name: "+l.getSecond_name());
+                }
                 break;
         }
     }

@@ -5,6 +5,8 @@ import dao.impl.LectorDaoImpl;
 import model.Department;
 import model.Lector;
 
+import java.util.Set;
+
 public class LectorService {
     private LectorDaoImpl lectorDao = new LectorDaoImpl();
 
@@ -18,5 +20,8 @@ public class LectorService {
     }
     public void deleteLector(Lector lector){
         lectorDao.delete(lector);
+    }
+    public Set<Lector> globalSearch(String template){
+        return lectorDao.globalSearch(template);
     }
 }

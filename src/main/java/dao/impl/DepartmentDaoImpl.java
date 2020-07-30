@@ -2,11 +2,13 @@ package dao.impl;
 
 
 import dao.DepartmentDao;
+import model.Degree;
 import model.Department;
 import model.Lector;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import services.DegreeService;
 import utils.HibernateSessionFactoryUtil;
 
 import java.util.Set;
@@ -70,13 +72,34 @@ public class DepartmentDaoImpl implements DepartmentDao {
         return lector;
     }
 
-    public long getAverageSalaryByDepartmentName(String name) {
-        return 0;
+    public int getAverageSalaryByDepartmentName(String name) {
+        Department department = findByName(name);
+        if(department.getLectors().size()==0){
+            return  0;
+        }
+        else{
+            int salarySum = department.getLectors().stream().mapToInt(Lector::getSalary).sum();
+            int averageSalary = salarySum/department.getLectors().size();
+            return averageSalary;
+        }
     }
 
     public long getEmployeesCountByDepartmentName(String name) {
         Department department = findByName(name);
         int employeesCount = department.getLectors().size();
         return employeesCount;
+    }
+
+
+    public String getDepartmentStatisticByDepartmentName(String name) {
+        Department department = findByName(name);
+        DegreeService degreeService = new DegreeService();
+        long assistant = department.getLectors().stream().filter(lector -> lector.getDegree().getId() == degreeService.findById(1).getId()).count();
+        long associate_proffesor =department.getLectors().stream().filter(lector -> lector.getDegree().getId() == degreeService.findById(2).getId()).count();
+        long proffesor = department.getLectors().stream().filter(lector -> lector.getDegree().getId() == degreeService.findById(3).getId()).count();
+        String message = "assistant: "+assistant
+                +"\nassociate_proffesor: "+associate_proffesor
+                +"\nproffesor: "+proffesor;
+        return message;
     }
 }

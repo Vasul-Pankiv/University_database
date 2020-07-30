@@ -24,6 +24,12 @@ public class DepartmentService {
     public long getDepartmentEmployeesCount(String name){
         return departmentDao.getEmployeesCountByDepartmentName(name);
     }
+    public String getDepartmentStatisticByDepartmentName(String name){
+        return departmentDao.getDepartmentStatisticByDepartmentName(name);
+    }
+    public int getAverageSalaryByDepartmentName(String name){
+        return  departmentDao.getAverageSalaryByDepartmentName(name);
+    }
     public void delete(Department department){
         departmentDao.delete(department);
     }

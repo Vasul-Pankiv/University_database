@@ -2,6 +2,7 @@ package model;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -11,7 +12,7 @@ public class Degree {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "degree")
+    @Column(name = "degreeName")
     String degree;
 
     @OneToMany(mappedBy = "degree",cascade = CascadeType.ALL)
@@ -29,6 +30,10 @@ public class Degree {
         lectors.add(lector);
     }
 
+    public String getDegree() {
+        return degree;
+    }
+
     public void removeLector(Lector lector){
         lectors.remove(lector);
     }
@@ -44,4 +49,6 @@ public class Degree {
     public void setLectors(Set<Lector> lectors) {
         this.lectors = lectors;
     }
+
+
 }

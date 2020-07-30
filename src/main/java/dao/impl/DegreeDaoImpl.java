@@ -2,6 +2,7 @@ package dao.impl;
 
 import dao.DegreeDao;
 import model.Degree;
+import model.Lector;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utils.HibernateSessionFactoryUtil;
@@ -11,7 +12,12 @@ import java.util.Set;
 public class DegreeDaoImpl implements DegreeDao {
     @Override
     public Degree findById(long id) {
-        return null;
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        Degree degree= session.get(Degree.class, id);
+        tx1.commit();
+        session.close();
+        return degree;
     }
 
     @Override

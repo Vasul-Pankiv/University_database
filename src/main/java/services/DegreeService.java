@@ -8,7 +8,7 @@ public class DegreeService {
     public DegreeService(){}
     DegreeDaoImpl degreeDao = new DegreeDaoImpl();
 
-    public Degree findeById(long id){
+    public Degree findById(long id){
         return degreeDao.findById(id);
     }
     public void save(Degree degree){

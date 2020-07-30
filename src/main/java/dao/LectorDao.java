@@ -1,8 +1,7 @@
 package dao;
 
 import model.Lector;
-
-import java.util.List;
+import java.util.*;
 
 public interface LectorDao {
     Lector findById(long id);
@@ -10,5 +9,6 @@ public interface LectorDao {
     void delete(Lector lector);
     void update(Lector lector);
     List<Lector> findAll();
+    Set<Lector> globalSearch(String template);
 
 }

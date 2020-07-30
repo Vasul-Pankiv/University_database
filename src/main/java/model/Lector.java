@@ -20,7 +20,7 @@ public class Lector {
     private String second_name;
 
     @Column(name = "salary")
-    private long salary;
+    private int salary;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "degree_id")
@@ -36,7 +36,7 @@ public class Lector {
 
     public  Lector(){
     }
-    public  Lector(String name,String second_name, long salary,Degree degree){
+    public  Lector(String name,String second_name, int salary,Degree degree){
         this.name = name;
         this.second_name = second_name;
         this.salary = salary;
@@ -76,11 +76,11 @@ public class Lector {
         this.degree = degree;
     }
 
-    public long getSalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(long salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 
