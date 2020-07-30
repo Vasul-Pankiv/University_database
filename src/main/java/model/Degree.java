@@ -12,7 +12,7 @@ public class Degree {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "degreeName")
+    @Column(name = "degree")
     String degree;
 
     @OneToMany(mappedBy = "degree",cascade = CascadeType.ALL)

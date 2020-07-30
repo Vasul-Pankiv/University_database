@@ -13,9 +13,9 @@ public class DegreeDaoImpl implements DegreeDao {
     @Override
     public Degree findById(long id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         Degree degree= session.get(Degree.class, id);
-        tx1.commit();
+        tx.commit();
         session.close();
         return degree;
     }
@@ -23,27 +23,27 @@ public class DegreeDaoImpl implements DegreeDao {
     @Override
     public void save(Degree degree) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         session.save(degree);
-        tx1.commit();
+        tx.commit();
         session.close();
     }
 
     @Override
     public void delete(Degree degree) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         session.delete(degree);
-        tx1.commit();
+        tx.commit();
         session.close();
     }
 
     @Override
     public void update(Degree degree) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         session.update(degree);
-        tx1.commit();
+        tx.commit();
         session.close();
     }
 

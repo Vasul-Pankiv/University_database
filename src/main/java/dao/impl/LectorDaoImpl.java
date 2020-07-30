@@ -17,34 +17,34 @@ public class LectorDaoImpl implements LectorDao {
 
     public Lector findById(long id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         Lector lector= session.get(Lector.class, id);
-        tx1.commit();
+        tx.commit();
         session.close();
         return lector;
     }
 
     public void save(Lector lector) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         session.save(lector);
-        tx1.commit();
+        tx.commit();
         session.close();
     }
 
     public void delete(Lector lector) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         session.delete(lector);
-        tx1.commit();
+        tx.commit();
         session.close();
     }
 
     public void update(Lector lector) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         session.update(lector);
-        tx1.commit();
+        tx.commit();
         session.close();
     }
 

@@ -16,9 +16,9 @@ import java.util.Set;
 public class DepartmentDaoImpl implements DepartmentDao {
     public Department findById(long id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         Department department= session.get(Department.class, id);
-        tx1.commit();
+        tx.commit();
         session.close();
         return department;
     }
@@ -36,25 +36,25 @@ public class DepartmentDaoImpl implements DepartmentDao {
 
     public void save(Department department) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         session.save(department);
-        tx1.commit();
+        tx.commit();
         session.close();
     }
 
     public void delete(Department department) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         session.delete(department);
-        tx1.commit();
+        tx.commit();
         session.close();
     }
 
     public void update(Department department) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         session.update(department);
-        tx1.commit();
+        tx.commit();
         session.close();
     }
 
