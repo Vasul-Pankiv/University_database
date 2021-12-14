@@ -18,7 +18,7 @@ public class Main {
         String command = "";
 
         while (!command.equals("0")) {
-
+            //new commit
             System.out.println("Menu:\n" +
                     "1. Who is head of department {department_name}\n" +
                     "2. Show {department_name} statistic\n" +
